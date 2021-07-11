@@ -1,0 +1,45 @@
+
+
+#  *-----------------------------------------------------------------------------------------------*
+#  | STEP 1: Install the right packages
+#  *-----------------------------------------------------------------------------------------------*
+
+unavailable_packages <- setdiff(c("RPresto"), rownames(installed.packages())) 
+if (length(unavailable_packages)>0){ 
+  install.packages(unavailable_packages) 
+} 
+
+#  *-----------------------------------------------------------------------------------------------*
+#  | STEP 2: Load libraries
+#  *-----------------------------------------------------------------------------------------------*
+
+library('DBI') 
+
+#  *-----------------------------------------------------------------------------------------------*
+#  | STEP 3: Setup Connection
+#  *-----------------------------------------------------------------------------------------------*
+connection <- dbConnect(RPresto::Presto(), 
+                        host='http://localhost',
+                        port=8080,
+                        user='teacher',
+                        schema='information_schema', 
+                        catalog = 'system'
+) 
+
+#  *-----------------------------------------------------------------------------------------------*
+#  | STEP 4a: Some simple commands to see the list of tables, columns within 
+#  | the table called “tables” and the first 20 elements of the table called “tables”
+#  *-----------------------------------------------------------------------------------------------*
+
+# List of tables
+dbListTables(connection)
+
+# List of columns within a table called tables
+dbListFields(connection, 'tables')
+
+# The first 20 rows from the table called tables
+dbGetQuery(connection, 'SELECT * from tables Limit 20')
+
+
+
+
