@@ -35,6 +35,8 @@ connection <-dbConnect(RPresto::Presto()
 ```
 Note the **host** and **port** will be the same value as the one we saw from `etc/config.properties` file under `discovery.uri` property.
 
+You can find the full script [here.](./scripts/RStudio_Script.csv)
+
 ### Tableau ###
 1. Go to https://tableau.com, Products tab and download **Tableau Desktop** as a free *trial* version.
 
