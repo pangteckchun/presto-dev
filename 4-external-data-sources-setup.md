@@ -1,6 +1,7 @@
 ## External data sources and their setup ##
 This page will provide an overview of how to setup external data sources for MySQL, Kafka and Hive (Hadoop).
 
+
 ### MySQL ###
 1. Install MySQL (version 8.0.21) from https://www.mysql.com. Select community (GP) version and download **MySQL Community Server** for your OS.
 
@@ -15,6 +16,7 @@ A copy of the data set can be found [here](./data/MySQL_Dataset.csv).
 -- Run `show schemas from mysql` and you should see the new schema created using the MySQL CLI earlier on;  
 -- Run `show tables from <schema_name>` to show the table(s) created using MySQL CLI earlier on;  
 -- Perform your regular SQL DML once you know the table name.
+
 
 ### Kafka ###
 1. Download tar file Kafka from https://kafka.apache.org and unzip the tar file to an installation folder of your choice.
@@ -49,7 +51,6 @@ presto> show tables from kafka.default;
 presto> select * from kafka.default.testTopic;
 -- You should see the messages submitted to the Kafka topic
 ```
-
 ### More Kafka-Presto stuff ###
 1. Start zookeeper & Kafka from the command line.
 -- Always start zookeeper before starting kafka
@@ -76,6 +77,7 @@ presto> select * from kafka.default.ppeAvailability;
 ```
 
 7. Use select statements, even nested selects with the appropriate where clauses and apply Presto predefined SQL function in the select statements: `json_extract_message(_message, '$<some_column_name>')`
+
 
 ### Hadoop ###
 1. Version in this notes: 2.10.0.
@@ -126,7 +128,7 @@ presto> select * from kafka.default.ppeAvailability;
 - Run `sbin/stop-yarn.sh`;
 - Run `sbin/stop-dfs.sh`;
 - Run `jps` again to make sure no services are running now.
----
+
 
 ### Hive ###
 1. Version in this notes: 2.3.7.
